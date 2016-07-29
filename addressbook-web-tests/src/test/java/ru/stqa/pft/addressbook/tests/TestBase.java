@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Виктория on 27.07.2016.
  */
-public class TestBase {
+public class TestBase extends ApplicationManager{
 
   protected final ApplicationManager app = new ApplicationManager();FirefoxDriver wd;
 
@@ -128,7 +128,7 @@ public class TestBase {
 
 
 
-  protected void deleteSelectedGroup() {
+  protected void deleteSelectedContact() {
       wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
   }
 
