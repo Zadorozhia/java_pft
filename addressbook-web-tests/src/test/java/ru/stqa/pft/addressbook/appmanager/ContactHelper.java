@@ -49,9 +49,6 @@ public class ContactHelper extends HelperBase{
       click(By.xpath("//div[@id='content']/form/select[4]//option[2]"));
     }
     type(By.name("ayear"), contactDataInfo.getAyear());
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).isSelected()) {
-      click(By.xpath("//div[@id='content']/form/select[5]//option[2]"));
-    }
     type(By.name("address2"), contactDataAddress.getAddress2());
     type(By.name("phone2"), contactDataPhone.getPhone2());
     type(By.name("notes"), contactDataInfo.getNotes());
