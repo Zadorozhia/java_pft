@@ -22,4 +22,19 @@ public class EcuationsTest {
     Ecuation e=new Ecuation(1,5,6);
     Assert.assertEquals(e.rootNumber(),2);
   }
+  @Test
+  public void testLinear(){
+    Ecuation e=new Ecuation(0,1,1);
+    Assert.assertEquals(e.rootNumber(),1);
+  }
+  @Test
+  public void testConstant(){
+    Ecuation e=new Ecuation(0,0,1);
+    Assert.assertEquals(e.rootNumber(),0);
+  }
+  @Test
+  public void testZero(){
+    Ecuation e=new Ecuation(0,0,0);
+    Assert.assertEquals(e.rootNumber(),-1);
+  }
 }
