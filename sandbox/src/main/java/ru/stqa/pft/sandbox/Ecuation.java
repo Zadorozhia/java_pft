@@ -35,7 +35,7 @@ public class Ecuation {
     else {
         n =-1;
       }
-      
+
     }
   public int rootNumber(){
     return n;
