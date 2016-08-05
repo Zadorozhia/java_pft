@@ -1,8 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.*;
 
 /**
@@ -19,7 +22,7 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactDataName contactDataName, ContactDataInfo contactDataInfo, ContactDataAddress contactDataAddress, ContactDataPhone contactDataPhone, ContactDataMail contactDataMail) {
+  public void fillContactForm(ContactDataName contactDataName, ContactDataInfo contactDataInfo, ContactDataAddress contactDataAddress, ContactDataPhone contactDataPhone, ContactDataMail contactDataMail, boolean creation) {
     type(By.name("firstname"), contactDataName.getFirstname());
     type(By.name("middlename"), contactDataName.getMiddlename());
     type(By.name("lastname"), contactDataName.getLastname());
@@ -49,11 +52,20 @@ public class ContactHelper extends HelperBase{
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[2]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[4]//option[2]"));
     }
+
+    if(creation){
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactDataInfo.getGroup());
+    }
+    else{
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
     type(By.name("ayear"), contactDataInfo.getAyear());
     type(By.name("address2"), contactDataAddress.getAddress2());
     type(By.name("phone2"), contactDataPhone.getPhone2());
     type(By.name("notes"), contactDataInfo.getNotes());
   }
+
+  
 
   public void initContactCreation() {
     click(By.linkText("add new"));
@@ -74,6 +86,5 @@ public class ContactHelper extends HelperBase{
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
-
 
 }
