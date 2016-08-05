@@ -14,6 +14,7 @@ public class ContactDeletionTests extends TestBase{
                     new ContactDataPhone("000000", "111111", "222222", "333333", "user9"),
                     new ContactDataMail("mail1@mail.ru", "mail2@mail.ru", "mail3@mail.ru"));
         }
+        app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContact();
     }
