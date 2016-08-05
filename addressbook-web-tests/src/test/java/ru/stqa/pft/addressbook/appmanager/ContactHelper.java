@@ -92,7 +92,7 @@ public class ContactHelper extends HelperBase{
                             ContactDataAddress contact3, ContactDataPhone contact4,
                             ContactDataMail contact5) {
     initContactCreation();
-    fillContactForm(contact1, contact2, contact3, contact4, contact5);
+    fillContactForm(contact1, contact2, contact3, contact4, contact5, true);
     submitContactCreation();
   }
 
