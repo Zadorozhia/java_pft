@@ -87,7 +87,8 @@ public class ContactHelper extends HelperBase{
 
   public void initContactModification(int i) {
 
-    wd.findElements(By.xpath("//*[@src='icons/pencil.png']")).get(i).click();
+    WebElement row = wd.findElements(By.cssSelector("tr[name=entry]")).get(i);
+    row.findElement(By.xpath("./td[8]/a/img")).click();
   }
 
   public void submitContactModification() {
