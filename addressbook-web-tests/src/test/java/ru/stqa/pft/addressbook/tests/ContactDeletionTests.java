@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase{
 
-    @Test
+    @Test(enabled=false)
     public void testContactDeletion() {
         if(!app.getContactHelper().isThereContact()){
             app.getContactHelper().createContact(new ContactDataName("user1", "user2", null, null),
@@ -18,10 +18,10 @@ public class ContactDeletionTests extends TestBase{
                     new ContactDataMail("mail1@mail.ru", "mail2@mail.ru", "mail3@mail.ru"));
         }
         List<ContactDataName> before=app.getContactHelper().getContactList();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         List<ContactDataName> after=app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(),before.size()-1);
 
