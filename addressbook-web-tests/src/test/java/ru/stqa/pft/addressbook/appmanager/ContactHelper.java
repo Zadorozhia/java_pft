@@ -1,13 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.pft.addressbook.model.*;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,30 +24,30 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactDataName contactDataName, ContactDataInfo contactDataInfo, ContactDataAddress contactDataAddress, ContactDataPhone contactDataPhone, ContactDataMail contactDataMail, boolean creation) {
-    type(By.name("firstname"), contactDataName.getFirstname());
-    type(By.name("middlename"), contactDataName.getMiddlename());
-    type(By.name("lastname"), contactDataName.getLastname());
-    type(By.name("nickname"), contactDataName.getNickname());
+  public void fillContactForm(ContactData contactData, boolean creation) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("middlename"), contactData.getMiddlename());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNickname());
     click(By.name("photo"));
-    type(By.name("title"), contactDataInfo.getTitle());
-    type(By.name("company"), contactDataInfo.getCompany());
-    type(By.name("address"), contactDataAddress.getAddress());
-    type(By.name("home"), contactDataPhone.getHome());
-    type(By.name("mobile"), contactDataPhone.getMobile());
-    type(By.name("work"), contactDataPhone.getWork());
-    type(By.name("fax"), contactDataPhone.getFax());
-    type(By.name("email"), contactDataMail.getEmail());
-    type(By.name("email2"), contactDataMail.getEmail2());
-    type(By.name("email3"), contactDataMail.getEmail3());
-    type(By.name("homepage"), contactDataInfo.getHomepage());
+    type(By.name("title"), contactData.getTitle());
+    type(By.name("company"), contactData.getCompany());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHome());
+    type(By.name("mobile"), contactData.getMobile());
+    type(By.name("work"), contactData.getWork());
+    type(By.name("fax"), contactData.getFax());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+    type(By.name("homepage"), contactData.getHomepage());
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[3]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
     }
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[2]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
     }
-    type(By.name("byear"), contactDataInfo.getByear());
+    type(By.name("byear"), contactData.getByear());
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[3]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[3]//option[3]"));
     }
@@ -58,15 +56,15 @@ public class ContactHelper extends HelperBase{
     }
 
     if(creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactDataInfo.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }
     else{
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-    type(By.name("ayear"), contactDataInfo.getAyear());
-    type(By.name("address2"), contactDataAddress.getAddress2());
-    type(By.name("phone2"), contactDataPhone.getPhone2());
-    type(By.name("notes"), contactDataInfo.getNotes());
+    type(By.name("ayear"), contactData.getAyear());
+    type(By.name("address2"), contactData.getAddress2());
+    type(By.name("phone2"), contactData.getPhone2());
+    type(By.name("notes"), contactData.getNotes());
   }
 
   
@@ -96,11 +94,9 @@ public class ContactHelper extends HelperBase{
   }
 
 
-  public void createContact(ContactDataName contact1, ContactDataInfo contact2,
-                            ContactDataAddress contact3, ContactDataPhone contact4,
-                            ContactDataMail contact5) {
+  public void createContact(ContactData contact) {
     initContactCreation();
-    fillContactForm(contact1, contact2, contact3, contact4, contact5, true);
+    fillContactForm(contact,true);
     submitContactCreation();
   }
 
@@ -112,15 +108,16 @@ public class ContactHelper extends HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactDataName> getContactList() {
-    List<ContactDataName> contacts=new ArrayList<ContactDataName>();
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts=new ArrayList<ContactData>();
     List<WebElement> elements=wd.findElements(By.cssSelector("tr[name=entry]"));
 
-    for(WebElement element:elements){
-      String firstname=element.findElement(By.xpath("./td[3]")).getText();
-      String lastname=element.findElement(By.xpath("./td[2]")).getText();
-      int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactDataName contact=new ContactDataName(id,firstname,null,lastname,null);
+    for(WebElement element:elements) {
+      String firstname = element.findElement(By.xpath("./td[3]")).getText();
+      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, firstname, null, lastname, null, null, null, null, null,
+              null, null, null, null, null, null, null, null, null, null, null,null,null);
       contacts.add(contact);
     }
     return contacts;
