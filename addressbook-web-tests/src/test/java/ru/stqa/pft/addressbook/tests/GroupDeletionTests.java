@@ -14,7 +14,7 @@ public class GroupDeletionTests extends TestBase {
         app.goTo().groupPage();
 
         if(app.group().list().size()==0){
-            app.group().create(new GroupData("test1", null, null));
+            app.group().create(new GroupData().withName("test1"));
         }
     }
     @Test
@@ -23,7 +23,7 @@ public class GroupDeletionTests extends TestBase {
         app.goTo().groupPage();
 
         if(!app.group().isThereGroup()){
-            app.group().create(new GroupData("test1", null, null));
+            app.group().create(new GroupData().withName("test1"));
         }
         List<GroupData> before=app.group().list();
         int index=before.size()-1;
