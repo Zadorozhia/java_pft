@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Виктория on 30.07.2016.
@@ -83,11 +85,16 @@ public class ContactHelper extends HelperBase{
     wd.switchTo().alert().accept();
   }
 
+
   public void selectContact(int index) {
 
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectContactById(int id) {
+
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
   public void initContactModification(int i) {
 
     WebElement row = wd.findElements(By.cssSelector("tr[name=entry]")).get(i);
@@ -107,6 +114,10 @@ public class ContactHelper extends HelperBase{
 
   public void delete(int index) {
     selectContact(index);
+    deleteSelectedContact();
+  }
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     deleteSelectedContact();
   }
   public void modify(int index, ContactData contact) {
@@ -134,4 +145,18 @@ public class ContactHelper extends HelperBase{
     }
     return contacts;
   }
+  public Set<ContactData> all() {
+    Set<ContactData> contacts=new HashSet<ContactData>();
+    List<WebElement> elements=wd.findElements(By.cssSelector("tr[name=entry]"));
+
+    for(WebElement element:elements) {
+      String firstname = element.findElement(By.xpath("./td[3]")).getText();
+      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+    }
+    return contacts;
+  }
+
+
 }
