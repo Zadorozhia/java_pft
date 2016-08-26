@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vtence.hamcrest:hamcrest-dom:2.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vtence.hamcrest/hamcrest-dom/2.0.0/82608b6f8c09ea5cbd06bd70c4219abed2e590d3/hamcrest-dom-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vtence.hamcrest/hamcrest-dom/2.0.0/6b8ab5ed231dcf7a849bfba5e198bc4b0728cba3/hamcrest-dom-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
