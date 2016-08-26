@@ -19,7 +19,7 @@ public class ContactCreationTests extends TestBase{
 
     ContactData contact=new ContactData().withFirstname("userLam").withMiddlename("user2")
             .withLastname("user3").withCompany("user4")
-            .withEmail("mail1@mail.ru").withGroup("test5");
+            .withEmail("mail1@mail.ru");
     app.contact().create(contact);
 
     app.goTo().gotoHomePage();

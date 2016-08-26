@@ -56,11 +56,11 @@ public class ContactHelper extends HelperBase{
     }
 
     type(By.name("ayear"), contactData.getAyear());
-    if(contactData.getGroup() == null){
-      click(By.name("new_group"));
-    }
+
     if(creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if(contactData.getGroup() != null){
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
     }
     else{
       Assert.assertFalse(isElementPresent(By.name("new_group")));
