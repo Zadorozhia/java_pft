@@ -63,6 +63,7 @@ public class ContactHelper extends HelperBase{
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
     if(contactData.getGroup() == null){
+      click(By.name("new_group"));
     }
 
     type(By.name("address2"), contactData.getAddress2());
