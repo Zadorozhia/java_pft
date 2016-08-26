@@ -19,22 +19,14 @@ public class GroupDeletionTests extends TestBase {
     }
     @Test
     public void testGroupDeletion() {
-
-        app.goTo().groupPage();
-
-        if(!app.group().isThereGroup()){
-            app.group().create(new GroupData().withName("test1"));
-        }
         List<GroupData> before=app.group().list();
         int index=before.size()-1;
         app.group().delete(index);
         List<GroupData> after=app.group().list();
         Assert.assertEquals(after.size(), before.size()-1);
-
         before.remove(index);
-        for(int i=0;i<after.size();i++){
-            Assert.assertEquals(before.get(i),after.get(i));
-        }
+        Assert.assertEquals(before,after);
+
     }
 
 
