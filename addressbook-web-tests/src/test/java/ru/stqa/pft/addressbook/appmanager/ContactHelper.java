@@ -80,6 +80,11 @@ public class ContactHelper extends HelperBase{
 
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
+
+  private void selectUserImgById(int id) {
+    wd.findElement((By.cssSelector("a[href*='view.php?id=" + id + "']"))).click();
+  }
+
   public void initContactModification(int i) {
 
     WebElement row = wd.findElements(By.cssSelector("tr[name=entry]")).get(i);
@@ -102,6 +107,7 @@ public class ContactHelper extends HelperBase{
    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     //wd.switchTo().alert().accept();//
   }
+
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
@@ -161,4 +167,12 @@ public class ContactHelper extends HelperBase{
             .withHome(home).withMobile(mobile).withWork(work)
             .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
   }
+
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    selectUserImgById(contact.getId());
+    String allContactInfo = wd.findElement((By.id("content"))).getText();
+    return new ContactData().withAllContactInfo(allContactInfo);
+  }
+
+
 }

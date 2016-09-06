@@ -29,6 +29,16 @@ public class ContactData {
   private String phone2;
   private String allPhones;
   private String allEmails;
+  private String allContactInfo;
+
+  public String getAllContactInfo() {
+    return allContactInfo;
+  }
+
+  public ContactData withAllContactInfo(String allContactInfo) {
+    this.allContactInfo = allContactInfo;
+    return this;
+  }
 
   public String getAllEmails() {
     return allEmails;
