@@ -1,0 +1,92 @@
+<list>
+  <contact>
+    <firstname>username 0</firstname>
+    <lastname>userlastname 0</lastname>
+    <address>usersity 0</address>
+    <home>12345 0</home>
+    <mobile>23456 0</mobile>
+    <work>34567 0</work>
+    <email>email@mail 0</email>
+  </contact>
+  <contact>
+    <firstname>username 1</firstname>
+    <lastname>userlastname 1</lastname>
+    <address>usersity 1</address>
+    <home>12345 1</home>
+    <mobile>23456 1</mobile>
+    <work>34567 1</work>
+    <email>email@mail 1</email>
+  </contact>
+  <contact>
+    <firstname>username 2</firstname>
+    <lastname>userlastname 2</lastname>
+    <address>usersity 2</address>
+    <home>12345 2</home>
+    <mobile>23456 2</mobile>
+    <work>34567 2</work>
+    <email>email@mail 2</email>
+  </contact>
+  <contact>
+    <firstname>username 3</firstname>
+    <lastname>userlastname 3</lastname>
+    <address>usersity 3</address>
+    <home>12345 3</home>
+    <mobile>23456 3</mobile>
+    <work>34567 3</work>
+    <email>email@mail 3</email>
+  </contact>
+  <contact>
+    <firstname>username 4</firstname>
+    <lastname>userlastname 4</lastname>
+    <address>usersity 4</address>
+    <home>12345 4</home>
+    <mobile>23456 4</mobile>
+    <work>34567 4</work>
+    <email>email@mail 4</email>
+  </contact>
+  <contact>
+    <firstname>username 5</firstname>
+    <lastname>userlastname 5</lastname>
+    <address>usersity 5</address>
+    <home>12345 5</home>
+    <mobile>23456 5</mobile>
+    <work>34567 5</work>
+    <email>email@mail 5</email>
+  </contact>
+  <contact>
+    <firstname>username 6</firstname>
+    <lastname>userlastname 6</lastname>
+    <address>usersity 6</address>
+    <home>12345 6</home>
+    <mobile>23456 6</mobile>
+    <work>34567 6</work>
+    <email>email@mail 6</email>
+  </contact>
+  <contact>
+    <firstname>username 7</firstname>
+    <lastname>userlastname 7</lastname>
+    <address>usersity 7</address>
+    <home>12345 7</home>
+    <mobile>23456 7</mobile>
+    <work>34567 7</work>
+    <email>email@mail 7</email>
+  </contact>
+  <contact>
+    <firstname>username 8</firstname>
+    <lastname>userlastname 8</lastname>
+    <address>usersity 8</address>
+    <home>12345 8</home>
+    <mobile>23456 8</mobile>
+    <work>34567 8</work>
+    <email>email@mail 8</email>
+  </contact>
+  <contact>
+    <firstname>username 9</firstname>
+    <lastname>userlastname 9</lastname>
+    <address>usersity 9</address>
+    <home>12345 9</home>
+    <mobile>23456 9</mobile>
+    <work>34567 9</work>
+    <email>email@mail 9</email>
+  </contact>
+</list>
