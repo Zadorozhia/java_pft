@@ -3,47 +3,84 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 /**
  * Created by Виктория on 25.08.2016.
  */
 @XStreamAlias("contact")
+@Entity
+@Table(name="addressbook")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name="id")
   private int id=Integer.MAX_VALUE;
   @Expose
+  @Column(name="firstname")
   private String firstname;
+  @Transient
   private String middlename;
   @Expose
+  @Column(name="lastname")
   private String lastname;
+  @Transient
   private String nickname;
+  @Transient
   private String title;
+  @Transient
   private String company;
   @Expose
+  @Column(name="address")
+  @Type(type="text")
   private String address;
   @Expose
+  @Column(name="home")
+  @Type(type="text")
   private String home;
   @Expose
+  @Column(name="mobile")
+  @Type(type="text")
   private String mobile;
   @Expose
+  @Column(name="work")
+  @Type(type="text")
   private String work;
+  @Transient
   private String fax;
   @Expose
+  @Column(name="email")
+  @Type(type="text")
   private String email;
+  @Transient
   private String email2;
+  @Transient
   private String email3;
+  @Transient
   private String homepage;
+  @Transient
   private String address2;
+  @Transient
   private String byear;
+  @Transient
   private String ayear;
+  @Transient
   private String notes;
+  @Transient
   private String group;
+  @Transient
   private String phone2;
+  @Transient
   private String allPhones;
+  @Transient
   private String allEmails;
+  @Transient
   private String allContactInfo;
+
+  @Transient
   private File photo;
 
   public File getPhoto() {

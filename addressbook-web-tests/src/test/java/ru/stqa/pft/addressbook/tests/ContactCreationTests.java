@@ -61,15 +61,16 @@ public class ContactCreationTests extends TestBase{
   public void testContactCreation(ContactData contact) {
 
     app.goTo().gotoHomePage();
-    Contacts before=app.contact().all();
+    Contacts before=app.db().contacts();
     //File photo=new File("src/test/resources/user.jpg");
     //ContactData contact=new ContactData().withFirstname("userLam").withMiddlename("user2")
     //        .withLastname("user3").withPhoto(photo).withCompany("user4")
      //       .withEmail("mail1@mail.ru");
+    app.goTo().gotoHomePage();
     app.contact().create(contact);
     app.goTo().gotoHomePage();
     assertThat(app.contact().count(),equalTo( before.size()+1));
-    Contacts after=app.contact().all();
+    Contacts after=app.db().contacts();
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
 
