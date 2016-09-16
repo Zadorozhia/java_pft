@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Виктория on 25.08.2016.
@@ -69,8 +71,10 @@ public class ContactData {
   private String ayear;
   @Transient
   private String notes;
-  @Transient
-  private String group;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name="address_in_groups", joinColumns = @JoinColumn(name="id"),
+   inverseJoinColumns = @JoinColumn(name="group_id"))
+  private Set<GroupData>groups=new HashSet<GroupData>();
   @Transient
   private String phone2;
   @Transient
@@ -173,9 +177,7 @@ public class ContactData {
   public String getAyear() {
     return ayear;
   }
-  public String getGroup() {
-    return group;
-  }
+
   public String getAddress2() {
     return address2;
   }
@@ -266,10 +268,11 @@ public class ContactData {
     this.notes = notes;
     return this;
   }
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
+
   public ContactData withPhone2(String phone2) {
     this.phone2 = phone2;
     return this;

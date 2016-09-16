@@ -38,13 +38,16 @@ protected void setUp() throws Exception {
   public void testHbConnection(){
   Session session = sessionFactory.openSession();
   session.beginTransaction();
+
   List<GroupData> resultg = session.createQuery( "from GroupData" ).list();
   for (GroupData group:resultg) {
     System.out.println( group );
+    System.out.println(group.getContacts());
   }
   List<ContactData> resultc = session.createQuery( "from ContactData where deprecated='0000-00-00'" ).list();
   for (ContactData contact:resultc) {
     System.out.println( contact );
+    System.out.println(contact.getGroups());
   }
   session.getTransaction().commit();
   session.close();

@@ -59,9 +59,9 @@ public class ContactHelper extends HelperBase{
     type(By.name("ayear"), contactData.getAyear());
 
     if(creation){
-      if(contactData.getGroup() != null){
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-      }
+      //if(contactData.getGroup() != null){
+      //  new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      //}
     }
     else{
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -79,6 +79,15 @@ public class ContactHelper extends HelperBase{
   public void selectContactById(int id) {
 
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
+  public void selectJoinContactById(int id) {
+
+    wd.findElement(By.cssSelector("input[id ='" + id + "']")).click();
+  }
+  public void addingInGroupById(int id) {
+    click(By.cssSelector("select[name='to_group']"));
+    click(By.cssSelector(".right>select>option[value='" + id + "']"));
+    click(By.name("add"));
   }
 
   private void selectUserImgById(int id) {
