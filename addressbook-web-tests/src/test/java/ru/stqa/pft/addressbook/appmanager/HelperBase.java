@@ -56,4 +56,9 @@ public class HelperBase {
       return false;
     }
     }
+
+  public void filterGroupsById(int id) {
+    click(By.cssSelector("#right"));
+    click(By.cssSelector("#right>select>option[value='" + id + "']"));
+  }
 }

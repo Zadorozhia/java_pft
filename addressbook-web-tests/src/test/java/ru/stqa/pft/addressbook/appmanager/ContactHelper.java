@@ -184,4 +184,7 @@ public class ContactHelper extends HelperBase{
   }
 
 
+  public void removeFromGroup() {
+    click(By.cssSelector("input[name='remove']"));
+  }
 }
