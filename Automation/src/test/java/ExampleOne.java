@@ -21,7 +21,7 @@ public class ExampleOne {
     wait.until(ExpectedConditions.titleContains("automation"));
     System.out.println("Page title is:"+driver.getTitle());
     System.out.println("List results is:");
-    List<WebElement> elements=driver.findElements(By.tagName("h2"));
+    List<WebElement> elements=driver.findElements(By.cssSelector(".b_title h2"));
     for(WebElement element:elements){
       String name=element.getText();
       System.out.printf("-%s%n", name);
