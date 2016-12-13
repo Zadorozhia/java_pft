@@ -7,12 +7,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ExampleTwo {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         //Создаем экземпляр WebDriver
         WebDriver driver=new FirefoxDriver();
 
         //Устанавливаем неявное ожидание 10сек
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
         //1.Открываем главную страницу поисковой системы Bing
         driver.get("https://www.bing.com/");
@@ -40,8 +40,9 @@ public class ExampleTwo {
 
 
         //6. Нажать на первое изображение
-        driver.findElement(By.xpath("//div[@id='dg_c']//a/img")).click();
-
+        WebElement element=driver.findElement(By.xpath("//div[@id='dg_c']//a/img"));
+        Thread.sleep(5000);
+        element.click();
         //7.1 Переключаем на следующее изображение
        // driver.findElement(By.xpath("//a[@id='iol_navr']")).click();
 
