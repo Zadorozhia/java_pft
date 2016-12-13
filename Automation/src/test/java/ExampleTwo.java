@@ -40,8 +40,7 @@ public class ExampleTwo {
 
         //С ЭТОГО МЕСТА НЕ РАБОТАЕТ
         //6. Нажать на первое изображение
-        WebElement element=driver.findElement(By.xpath("//div[@id='dg_c']//a/img"));
-        Thread.sleep(5000);
+        WebElement element=driver.findElement(By.xpath("//div[@id='dg_c']//a"));
         element.click();
         //7.1 Переключаем на следующее изображение
        driver.findElement(By.xpath("//a[@id='iol_navr']")).click();
