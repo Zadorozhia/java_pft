@@ -57,6 +57,14 @@ public class EventHandler implements WebDriverEventListener {
 
   }
 
+  public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
+
+  }
+
+  public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
+
+  }
+
   public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver) {
 
   }
